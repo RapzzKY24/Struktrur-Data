@@ -1,39 +1,36 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-void inputDataMatrik(vector<vector<int>>& arr,int baris,int kolom){
-    for(int i= 0 ; i < baris ; i++){
-        for(int j = 0 ; j < kolom ; j++){
-             cout << "Masukkan elemen [" << i << "][" << j << "]: ";
-             cin >> arr[i][j];
+#include <vector>
+void inputDataMatriks(vector<vector<int>>& arr, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << "Masukkan elemen [" << i << "][" << j << "]: ";
+            cin >> arr[i][j];
         }
     }
 }
 
-void printMatriks(vector<vector<int>>& arr, int baris, int kolom) {
-    cout << "Matrix:" << endl;
-    for (int i = 0; i < baris; i++) {
+void printMatriks(const vector<vector<int>>& arr, int n) {
+    cout << "Matriks:" << endl;
+    for (int i = 0; i < n; i++) {
         cout << "[ ";
-        for (int j = 0; j < kolom; j++) {
+        for (int j = 0; j < n; j++) {
             cout << arr[i][j] << " ";
         }
         cout << "]" << endl;
     }
 }
 
+int main() {
+    int n;
+    cout << "Masukkan ukuran matriks persegi (n x n): ";
+    cin >> n;
 
-int main(){
-     int baris, kolom;
-    cout << "Masukkan jumlah baris: ";
-    cin >> baris;
-    cout << "Masukkan jumlah kolom: ";
-    cin >> kolom;
+    vector<vector<int>> arr(n, vector<int>(n));
 
-    vector<vector<int>> arr(baris, vector<int>(kolom));
-    
-    inputDataMatrik(arr, baris, kolom);
-    printMatriks(arr, baris, kolom);
+    inputDataMatriks(arr, n);
+    printMatriks(arr, n);
 
     return 0;
 }
