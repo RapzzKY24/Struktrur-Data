@@ -4,7 +4,8 @@ using namespace std;
 #include <string>
 
 int main(){
-    List l; createList(l);
+    List l;
+    createList(l);
 
     while (true){
         cout << "\n==== MENU ====\n"
@@ -17,10 +18,12 @@ int main(){
         int m; if(!(cin >> m)) break;
 
         if (m == 1){
-            Product p; inputProduct(p);
+            Product p; 
+            inputProduct(p);
             insertFirst(l, alokasi(p));
         } else if (m == 2){
-            Product p; inputProduct(p);
+            Product p; 
+            inputProduct(p);
             insertLast(l, alokasi(p));
         } else if (m == 3){
             if (isEmpty(l)){ 
@@ -37,7 +40,6 @@ int main(){
             }
             Product p; inputProduct(p);
             insertAfter(l, r, alokasi(p));
-            cout << "Done.\n";
         } else if (m == 4){
             printList(l);
         } else if (m == 5){

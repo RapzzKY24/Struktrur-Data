@@ -76,9 +76,9 @@ void printList(const List &l){
     }
     Node* p = l.first;
     while (p){
-        cout << p->data.idTransaksi << endl;
-        cout << p->data.jenis<< endl;
-        cout << p->data.jumlah << endl;
+        cout << "Id transaksi: " << p->data.idTransaksi << endl;
+        cout << "Jenis transaksi: " << p->data.jenis<< endl;
+        cout << "Jumlah transaksi: " << p->data.jumlah << endl;
         if (p->next) cout << " ";
         p = p->next;
     }
