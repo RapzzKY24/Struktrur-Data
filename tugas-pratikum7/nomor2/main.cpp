@@ -7,41 +7,45 @@ struct Node {
     Node* next;
 };
 
-struct List {
-    Node* first;
+struct Stack {
+    Node* top;
 };
 
-void createList(List &l) { l.first = nullptr; }
+void createList(Stack &s) { 
+    s.top = nullptr; 
+}
 
-bool isEmpty(const List &l) { return l.first == nullptr; }
+bool isEmpty(const Stack &s) { 
+    return s.top == nullptr; 
+}
 
-void push(List &l, int value) {
+void push(Stack &s, int value) {
     Node* p = new Node();
     p->value = value;        
-    p->next  = l.first;
-    l.first  = p;
+    p->next  = s.top;
+    s.top  = p;
 }
 
 
-bool pop(List &l) {
-    if (isEmpty(l)) return false;
-    Node* p = l.first;
-    l.first = p->next;
+bool pop(Stack &s) {
+    if (isEmpty(s)) return false;
+    Node* p = s.top;
+    s.top = p->next;
     delete p;
     return true;
 }
 
-void printStackTopDown(const List &l) {
+void printStackTopDown(const Stack &s) {
     cout << "Isi Stack Akhir: ";
-    for (Node* p = l.first; p != nullptr; p = p->next) {
+    for (Node* p = s.top; p != nullptr; p = p->next) {
         cout << p->value << " ";
     }
     cout << "\n";
 }
 
 int main() {
-    List st;
-    createList(st);
+    Stack s;
+    createList(s);
 
     int n;
     cin >> n;                
@@ -52,12 +56,12 @@ int main() {
         if (cmd == "push") {
             int x;
             cin >> x;        
-            push(st, x);
+            push(s, x);
         } else if (cmd == "pop") {
-            pop(st);         
+            pop(s);         
         } 
     }
 
-    printStackTopDown(st);
+    printStackTopDown(s);
 
 }

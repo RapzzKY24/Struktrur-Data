@@ -6,38 +6,38 @@ struct Node{
     Node* next;
 };
 
-struct List{
-    Node* first;
+struct Stack{
+    Node* top;
 };
 
-void createList(List &l){
-    l.first = nullptr;
+void createList(Stack &s){
+    s.top = nullptr;
 }
 
-bool isEmpty(const List &l){
-    return l.first == nullptr;
+bool isEmpty(const Stack &s){
+    return s.top == nullptr;
 }
 
-void pop(List &l){
-    if(isEmpty(l)){
-        cout << "List kosong" << endl;
+void pop(Stack &s){
+    if(isEmpty(s)){
+        cout << "Stack kosong" << endl;
         return;
     }
-    Node* p = l.first;
-    l.first = p->next;
+    Node* p = s.top;
+    s.top = p->next;
     delete p;
 }
 
-void push(List &l, int value){
+void push(Stack &s, int value){
     Node* p = new Node;
     p->value = value;
-    p->next = l.first;
-    l.first = p;
+    p->next = s.top;
+    s.top = p;
 }
 
-void printStackTopDown(const List &l) {
+void printStackTopDown(const Stack &s) {
     cout << "Isi Stack Akhir: ";
-    for (Node* p = l.first; p != nullptr; p = p->next) {
+    for (Node* p = s.top; p != nullptr; p = p->next) {
         cout << p->value << " ";
     }
     cout << "\n";
@@ -45,21 +45,21 @@ void printStackTopDown(const List &l) {
 
 
 int main(){
-    List l;
-    createList(l);
+    Stack s;
+    createList(s);
     int n,jumlahHapus, value;
     cout << "Masukkan jumlah data: ";
     cin >> n;
     for(int i = 0; i < n; i++){
         cout << "Masukkan data ke-" << i+1 << ": ";
         cin >> value;
-        push(l, value);
+        push(s, value);
     }
     cout << "Masukkan jumlah data yang ingin dihapus: ";
     cin >> jumlahHapus;
     for(int i = 0; i < jumlahHapus; i++){
-        pop(l);
+        pop(s);
     }
-    printStackTopDown(l);
+    printStackTopDown(s);
     return 0;
 }
